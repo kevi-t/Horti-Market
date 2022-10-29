@@ -1,0 +1,101 @@
+<?php
+ 	session_start();
+	require 'db.php';
+	if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
+	{
+		$_SESSION['message'] = "You need to first login to access this page !!!";
+		header("Location: Login/error.php");
+	}
+
+ ?>
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Horticulture</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" href="indexfooter.css" />
+		    <link rel="stylesheet" href="menu.css">
+        <link rel="stylesheet" href="style.css"/>
+		    <script src="js2/jquery.min.js"></script>
+        <script src="js2/bootstrap.min.js"></script> 
+
+    </head>
+
+<?php require 'menu2.php'; ?>
+	
+<body>
+
+<div class="cont">
+<?php
+  function dataFilter($data)
+  {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+  }
+?>
+			
+<?php
+  if(!isset($_GET['type']) OR $_GET['type'] == "all")
+   {
+	  $sql = "SELECT * FROM fproduct WHERE 1";
+   }
+  if(isset($_GET['type']) AND $_GET['type'] == "fruit")
+  {
+   $sql = "SELECT * FROM fproduct WHERE pcat = 'Fruit'";
+  }
+  if(isset($_GET['type']) AND $_GET['type'] == "vegetable")
+  {
+    $sql = "SELECT * FROM fproduct WHERE pcat = 'Vegetable'";
+  }
+  if(isset($_GET['type']) AND $_GET['type'] == "grain")
+  {
+	 $sql = "SELECT * FROM fproduct WHERE pcat = 'Grains'";
+  }
+  $result = mysqli_query($conn, $sql);
+?>
+<?php
+   while($row = $result->fetch_array()):
+   $picDestination = "images/productImages/".$row['pimage'];
+?>	
+<div class="product">
+<strong> <h2 class="title" style="color:black; "><?php echo $row['product'].'';?></h2></strong>
+<a href="review.php?pid=<?php echo $row['pid'] ;?>" > <img class="image" src="<?php echo $picDestination;?>" height="220px;" /></a>
+<blockquote><?php echo "Type : ".$row['pcat'].'';?><br><?php echo "Price : ".$row['price'].' Ksh';?><br>
+<?php echo "Quantity : ".$row['quantity'].' Kg';?></blockquote>	
+</div>   
+<?php endwhile;	?>			
+</div>  
+  						
+</body>
+
+<footer class="footer-distributed" style="background-color:black" id="aboutUs">
+  <center><h1 style="font: 35px calibri;">About Us</h1></center>
+  <div class="footer-left">
+    <h3 style="font-family: 'Times New Roman', cursive;">Horticulture &copy; </h3><br />
+    <p style="font-size:20px;color:white">Your product Our market !!!</p><br />
+  </div>
+  <div class="footer-center">
+     <div><i class="fa fa-map-marker"></i><p style="font-size:20px">Horticulture Fam<span>Bungoma</span></p>  </div>
+     <div><i class="fa fa-phone"></i><p style="font-size:20px">0792526394</p></div>
+     <div><i class="fa fa-envelope"></i><p style="font-size:20px"><a href="mailto:agroculture@gmail.com" style="color:white">kelvin@gmail.com</a></p></div>
+  </div>
+  <div class="footer-right">
+    <p class="footer-company-about" style="color:white"><span style="font-size:20px"><b>About Horticulture</b></span>
+      Horticulture is e-commerce trading platform for Fruits,Vegetables & Flowers...
+    </p>
+    <div class="footer-icons">
+      <a  href="#"><i style="margin-left: 0;margin-top:5px;"class="fa fa-facebook"></i></a>
+      <a href="#"><i style="margin-left: 0;margin-top:5px" class="fa fa-instagram"></i></a>
+      <a href="#"><i style="margin-left: 0;margin-top:5px" class="fa fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+</html>
