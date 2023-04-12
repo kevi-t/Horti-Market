@@ -26,6 +26,7 @@
 <?php require 'menu.php';?>
 
 <div class="cont">
+
 <?php
 	$sql="SELECT * FROM fproduct WHERE pid = '$pid'";
 	$result = mysqli_query($conn, $sql);
@@ -35,20 +36,22 @@
 	$result = mysqli_query($conn, $sql);
 	$frow = mysqli_fetch_assoc($result);
 	$picDestination = "../assets/images/productImages/".$row['pimage'];
-?>	
+?>
+
 <div class="product">	
-<img class="image fit" src="<?php echo $picDestination.'';?>" alt="" />
-<p style="font: 45px Times new roman;"><?= $row['product']; ?></p>
-<p style="font: 25px Times new roman;">Product Owner : </p>
-<p style="font: 25px Times new roman;">Price : <?= $row['price'].' Ksh'; ?></p>	
-<ul>
-<li> <a href="../myCart.php?flag=1&pid=<?= $pid; ?>"> Add</a> </li>
-<li> <a href="buyNow.php?pid=<?= $pid; ?>">Buy Now</a> </li>
-</ul>						
+    <img src="<?php echo $picDestination.'';?>" alt="" />
+    <h2><?= $row['product']; ?></h2>
+	<p>
+	   Product Owner :<br><br>
+	   Price : <?= $row['price'].' Ksh'; ?><br><br>
+	   Quantity : <?= $row['quantity'].' Kg'; ?><br><br>
+	</p>
+	<a href="../myCart.php?flag=1&pid=<?= $pid; ?>"><button class="btn2"> Add</button></a>
+	<a href="buyNow.php?pid=<?= $pid; ?>"><button class="btn2"> Buy Now</button></a>					
 </div>
 
 <div class="product">
-<h1>Product Reviews</h1>
+	<h1>Product Reviews</h1>
 	<?php
 		$sql = "SELECT * FROM review WHERE pid='$pid'";
 		$result = mysqli_query($conn, $sql);
@@ -57,16 +60,18 @@
 		if($result) :
 			while($row1 = $result->fetch_array()) :
 	?>
-<em style="color: black;"><?= $row1['comment']; ?></em>
-<em style="color: black;"><?php echo "Rating : ".$row1['rating'].' out of 10';?></em>
-<span class="time-right" style="color: black;"><?php echo "From: ".$row1['name']; ?></span>	<?php endwhile; endif;?>
-<p style="font: 20px Times new roman; align: left;">Rate this product</p>
-<form  method="POST" action="reviewInput.php?pid=<?= $pid; ?>">
-    <textarea style="background-color:white;color: black;" cols="5" name="comment" placeholder="Write a review"></textarea>
-    Rating: <input type="number" min="0" max="10" name="rating" value="0"/><input type="submit" />
-</form>
+	<p>
+	   <?= $row1['comment']; ?>
+	   <?php echo "Rating : ".$row1['rating'].' out of 10';?>
+	   <?php echo "From: ".$row1['name']; ?></span>	<?php endwhile; endif;?><br>
+	   <h3> Rate this product</h3><br>
+	</p>
+    <form class="container2" method="POST" action="reviewInput.php?pid=<?= $pid; ?>">
+	   <br><br>&nbsp  &nbsp &nbsp  &nbsp <textarea placeholder="Write a review"></textarea>
+       &nbsp  &nbsp &nbsp  &nbsp Rating:<input type="number" min="0" max="10" name="rating" value="0"/><br>
+	   <br>&nbsp  &nbsp &nbsp  &nbsp<button class="btn2">submit</button>
+     </form>
 </div>
-
 
 </div>
 </body>

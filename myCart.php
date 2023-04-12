@@ -59,11 +59,17 @@
 ?>
 
 <div class="product">
-	<strong><h2 class="title" style="color:black; "><?php echo $row1['product'].'';?></h2></strong>
-	<a href="products/review.php?pid=<?php echo $row1['pid'] ;?>" > <img class="image fit" src="<?php echo $picDestination;?>" alt="" height="220px;"  /></a>						
-	<blockquote><?php echo "Type : ".$row1['pcat'].'';?><br><?php echo "Price : ".$row1['price'].' /-';?><br></blockquote>						
+	<a href="products/review.php?pid=<?php echo $row1['pid'] ;?>" > <img src="<?php echo $picDestination;?>" alt=""/></a>
+  <h2><?php echo $row1['product'].'';?></h2>
+  <p>
+     <?php echo "Type : ".$row1['pcat'].'';?><br>
+     <?php echo "Price : ".$row1['price'].'Ksh';?><br>
+     <?php echo "Quantity : ".$row1['quantity'].'Kg';?>
+  </p>											
 </div>
+
 <?php endwhile;	?>
+
 </div>
 
 </body>

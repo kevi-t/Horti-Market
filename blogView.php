@@ -114,10 +114,12 @@
 <?php require 'includes/menu2.php';	?>
 
 <body>
-
 <div class="cont">
 
-<form method="post" action="blogView.php" class="container">
+<div class="product">
+
+
+
 	<?php
 		while($row = $result->fetch_array()) :
 		$id = $row['blogId'];
@@ -125,32 +127,32 @@
 		$result1 = mysqli_query($conn, $sql);
 		$numComment = mysqli_num_rows($result1);
 	?>
-					
-	<header><center><h2><?= $row['blogTitle']; ?></h2></center></header>
-	<blockquote><?= $row['blogContent']; ?><p>--- <?= $row['blogUser']; ?></p><p><?= $row['blogTime']; ?></p></blockquote>
-	<button class = "button special small" name="<?php echo 'like'.$id; ?>">
-	<span class="glyphicon glyphicon-thumbs-up"></span> Like</button><span><?= $row['likes']?></span>
+<form method="post" action="blogView.php" class="container2">				
+	<h2><?= $row['blogTitle']; ?></h2>
+	<?= $row['blogContent']; ?><p>--- <?= $row['blogUser']; ?></p><p><?= $row['blogTime']; ?></p>
+	<button  name="<?php echo 'like'.$id; ?>">Like</button><span><?= $row['likes']?></span>
 	<span class="glyphicon glyphicon-pencil"></span> Comments : <?= $numComment ?></button><br><br><br>
 	<textarea name="comment" id="comment" rows="1" placeholder="Write a Comment!"></textarea><br><br>
-	<input type="submit" name="<?php echo 'submit'.$id; ?>" class="btn" value="Submit Comment" />
-	<a href="blog/blogWrite.php" class="btn"> Write a Blog</a>
+	<button class="btn2"><?php echo 'submit'.$id; ?></button>
+	<a href="blog/blogWrite.php"> <button class="btn2"> write</button></a>
 
 <?php
 	if($result1) :
 		while($row1 = $result1->fetch_array()) :
 ?>
-<div>
-<img src="<?php echo 'assets/images/profileImages/'.$row1['commentPic']?>" alt="Avatar" height="100px"><br><span><em><?= $row1['commentUser']; ?></em></span>
+
+<img src="<?php echo 'assets/images/profileImages/'.$row1['commentPic']?>" alt="Avatar"><br><span><em><?= $row1['commentUser']; ?></em></span>
 <br><?= $row1['comment']; ?><span class="time-right"><?= formatDate($row1['commentTime']); ?></span>
 <?php endwhile; ?>
 <?php endif; ?>
-</div>
 <?php endwhile; ?>
 
 </form>
 
-</div>	
+</div>
 
+
+</div>	
 </body>
 
 <?php require 'includes/footer.php'; ?>

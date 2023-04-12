@@ -19,7 +19,7 @@
         <script src="https://kit.fontawesome.com/8fd23289ed.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/footer.css" />
+        <link rel="stylesheet" href="assets/css/footer.css"/>
         <link rel="stylesheet" href="assets/css/menu.css">
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
@@ -67,12 +67,17 @@
    $picDestination = "assets/images/productImages/".$row['pimage'];
 ?>	
 <div class="product">
-<strong> <h2 class="title" style="color:black; "><?php echo $row['product'].'';?></h2></strong>
-<a href="products/review.php?pid=<?php echo $row['pid'] ;?>" > <img class="image" src="<?php echo $picDestination;?>" height="220px;" /></a>
-<blockquote><?php echo "Type : ".$row['pcat'].'';?><br><?php echo "Price : ".$row['price'].' Ksh';?><br>
-<?php echo "Quantity : ".$row['quantity'].' Kg';?></blockquote>	
-</div>   
-<?php endwhile;	?>			
+    <a href="products/review.php?pid=<?php echo $row['pid'] ;?>"><img src="<?php echo $picDestination;?>"/></a>
+    <h2><?php echo $row['product'].'';?></h2>
+    <p>
+      <?php echo "Type : ".$row['pcat'].'';?><br>
+      <?php echo "Price : ".$row['price'].' Ksh';?><br>
+      <?php echo "Quantity : ".$row['quantity'].' Kg';?>
+    </p>
+</div> 
+
+<?php endwhile;	?>	
+
 </div>  
   						
 </body>
