@@ -1,0 +1,35 @@
+/*Products Styling*/
+.cont{
+    margin: 5px;
+    display: grid;
+    grid-template-columns:1fr,1fr;
+    grid-gap:10px;
+    
+  }
+  
+  .product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: auto;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product img {
+    height: 200px;
+    width: 200px;
+  }
+  
+  .product h3 {
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .product p {
+    font-size: 1em;
+    margin-bottom: 0;
+  }

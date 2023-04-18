@@ -21,6 +21,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/footer.css"/>
         <link rel="stylesheet" href="assets/css/menu.css">
+        <link rel="stylesheet" href="assets/css/product.css">
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         
@@ -32,7 +33,8 @@
 	
 <body>
 
-<div class="cont">
+<div class="product-grid">
+  
 <?php
   function dataFilter($data)
   {
@@ -66,7 +68,7 @@
    while($row = $result->fetch_array()):
    $picDestination = "assets/images/productImages/".$row['pimage'];
 ?>	
-<div class="product">
+<div class="product-card">
     <a href="products/review.php?pid=<?php echo $row['pid'] ;?>"><img src="<?php echo $picDestination;?>"/></a>
     <h2><?php echo $row['product'].'';?></h2>
     <p>

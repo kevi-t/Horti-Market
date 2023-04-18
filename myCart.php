@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/menu.css" />
+    <link rel="stylesheet" href="assets/css/product.css">
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script> 
 	</head>
@@ -34,7 +35,7 @@
 
 <body>
 
-<div class="cont">
+<div class="product-grid">
 
 <?php
   
@@ -58,7 +59,7 @@
 		$picDestination = "assets/images/productImages/".$row1['pimage'];
 ?>
 
-<div class="product">
+<div class="product-card">
 	<a href="products/review.php?pid=<?php echo $row1['pid'] ;?>" > <img src="<?php echo $picDestination;?>" alt=""/></a>
   <h2><?php echo $row1['product'].'';?></h2>
   <p>
