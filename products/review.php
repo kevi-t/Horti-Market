@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/footer.css"/>
   <link rel="stylesheet" href="../assets/css/menu.css" />
+  <link rel="stylesheet" href="../assets/css/review.css" />
   <script src="../assets/js/jquery.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script> 
 </head>
@@ -25,7 +26,7 @@
 
 <?php require 'menu.php';?>
 
-<div class="cont">
+<div class="product-grid">
 
 <?php
 	$sql="SELECT * FROM fproduct WHERE pid = '$pid'";
@@ -38,7 +39,7 @@
 	$picDestination = "../assets/images/productImages/".$row['pimage'];
 ?>
 
-<div class="product">	
+<div class="product-card">	
     <img src="<?php echo $picDestination.'';?>" alt="" />
     <h2><?= $row['product']; ?></h2>
 	<p>
@@ -46,11 +47,11 @@
 	   Price : <?= $row['price'].' Ksh'; ?><br><br>
 	   Quantity : <?= $row['quantity'].' Kg'; ?><br><br>
 	</p>
-	<a href="../myCart.php?flag=1&pid=<?= $pid; ?>"><button class="btn2"> Add</button></a>
-	<a href="buyNow.php?pid=<?= $pid; ?>"><button class="btn2"> Buy Now</button></a>					
+	<a href="../myCart.php?flag=1&pid=<?= $pid; ?>"><button class="btn3"> Add</button></a>
+	<a href="buyNow.php?pid=<?= $pid; ?>"><button class="btn3"> Buy Now</button></a>					
 </div>
 
-<div class="product">
+<div class="product-card">
 	<h1>Product Reviews</h1>
 	<?php
 		$sql = "SELECT * FROM review WHERE pid='$pid'";

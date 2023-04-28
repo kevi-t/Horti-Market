@@ -12,11 +12,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
-  <link rel="stylesheet" type="text/css" href="bootstrap.css">
-  <link rel="stylesheet" href="indexfooter.css" />
-  <link rel="stylesheet" href="menu.css" />
-  <script src="jquery.min.js"></script>
-  <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/footer.css" />
+  <link rel="stylesheet" href="../assets/css/menu.css" />
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
   </head>
 
 <body>
