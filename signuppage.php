@@ -17,7 +17,7 @@
 <body>
 <div class="bg-img">
  <center>
-<form action="Login/signUp.php" method='POST' class="container">
+<form action="authenticate/signUp.php" method='POST' class="container">
     <h2>SIGNUP</h2>
 	<div class="form-group">
         <input class="form-control" type="text" name="name" id="name" value="" placeholder="Name" required/>

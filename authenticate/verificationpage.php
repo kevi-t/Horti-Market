@@ -1,10 +1,3 @@
-<?php  session_start(); ?>
-<?php 
-$email = $_SESSION['email'];
-if($email == false){
-  header('Location: login-user.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,38 +5,23 @@ if($email == false){
     <title>Horticulture Web-App:Verification</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/footer.css" />
+    <link rel="stylesheet" href="../assets/css/menu.css" />
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
 </head>
+
+<?php  require 'menu.php'; ?>
 
 <body>
 
-<div class="container">
-   <div class="row">
-        <div class="col-md-4 offset-md-4 form">
+<div class="bg-img">
+ <center>   
+ <div class="container">
             <form action="verify.php" method="POST">
             <h2 class="text-center">Code Verification</h2>
-                    <?php 
-                    if(isset($_SESSION['info'])){
-                        ?>
-                        <div class="alert alert-success text-center">
-                            <?php echo $_SESSION['info']; ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <?php
-                    if(count($errors) > 0){
-                        ?>
-                        <div class="alert alert-danger text-center">
-                            <?php
-                            foreach($errors as $showerror){
-                                echo $showerror;
-                            }
-                            ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
+                    
                     <div class="form-group"><input class="form-control" type="number" name="otp" placeholder="Enter verification code" required></div>
                     <b>Category :</b>  
                     <input type="radio" id="farmer" name="category" value="1" class="radio" checked><label for="farmer">Farmer</label>
@@ -52,8 +30,11 @@ if($email == false){
             </form>
             </div>
     </div>
+</center>    
 </div>
 
 </body>
+
+<?php  require '../includes/footer.php'; ?>
 
 </html>

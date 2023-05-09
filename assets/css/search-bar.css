@@ -1,14 +1,14 @@
 .search-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
+  margin: 0;
+  width: 50%;
+  border-top: 10px;
+  border-radius: 5px;
+  background-color: white;
+  height:auto;
 }
-.search-input {
-  padding: 4px;
-  flex-grow: 1;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  
+.search-container h2{
+  margin: 0;
 }
 
 .search-button {

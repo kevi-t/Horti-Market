@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/footer.css"/>
   <link rel="stylesheet" href="../assets/css/menu.css" />
+  <link rel="stylesheet" href="../assets/css/product.css">
   <script src="../assets/js/jquery.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script> 
 </head>
@@ -33,7 +34,7 @@
 	}
 ?>
 
-<div class="cont">
+<div class="product-grid">
 
 <?php
 	if(!isset($_GET['type']) OR $_GET['type'] == "all")
@@ -63,11 +64,15 @@
 	$picDestination = "../assets/images/productImages/".$row['pimage'];
 ?>
 
-<div class="product">
-    <strong><h2 class="title" style="color:black; "><?php echo $row['product'].'';?></h2></strong>
-	<a href="review.php?pid=<?php echo $row['pid'] ;?>" > <img class="image fit" src="<?php echo $picDestination;?>" height="220px;"  /></a>
-	<blockquote><?php echo "Type : ".$row['pcat'].'';?><br><?php echo "Price : ".$row['price'].' /-';?><br></blockquote>
-	<?php echo "Quantity : ".$row['quantity'].' Kg';?></blockquote>	
+<div class="product-card">
+	<a href="review.php?pid=<?php echo $row['pid'] ;?>"> <img src="<?php echo $picDestination;?>"/></a>
+    <h2><?php echo $row['product'].'';?></h2>
+	<p>
+	   <?php echo "Type : ".$row['pcat'].'';?><br>
+	   <?php echo "Price : ".$row['price'].' Ksh';?><br>
+	   <?php echo "Quantity : ".$row['quantity'].' Kg';?>
+
+	</p>
 </div>
 
 <?php endwhile;	?>			

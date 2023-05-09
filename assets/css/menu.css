@@ -38,14 +38,6 @@ body{
   background-color: white;
   height:70%;
 }
-.container3 {
-  position: relative;
-  margin: 0;
-  width: 100%;
-  border-radius: 10px;
-  background-color: white;
-  height:70%;
-}
 
 /* Full-width input fields */
 input[type=text], input[type=password] {

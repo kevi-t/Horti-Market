@@ -47,8 +47,8 @@
 	   Price : <?= $row['price'].' Ksh'; ?><br><br>
 	   Quantity : <?= $row['quantity'].' Kg'; ?><br><br>
 	</p>
-	<a href="../myCart.php?flag=1&pid=<?= $pid; ?>"><button class="btn3"> Add</button></a>
-	<a href="buyNow.php?pid=<?= $pid; ?>"><button class="btn3"> Buy Now</button></a>					
+	<a href="../myCart.php?flag=1&pid=<?= $pid; ?>"><button class="product-button"> Add</button></a>
+	<a href="buyNow.php?pid=<?= $pid; ?>"><button class="product-button"> Buy Now</button></a>					
 </div>
 
 <div class="product-card">
