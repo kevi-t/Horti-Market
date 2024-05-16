@@ -6,3 +6,4 @@ Login page![Screenshot_6-3-2024_123429_localhost](https://github.com/kevi-t/Hort
 Admin page![Screenshot_6-3-2024_12368_localhost](https://github.com/kevi-t/Horti-Market/assets/104903442/98679e62-4040-4ad2-a001-772245d44d45)
 Digital market page![Products diplay page](https://github.com/kevi-t/Horti-Market/assets/104903442/8f73470d-fdd2-4880-9298-beb4aca64f09)
 Profile page![Profile page](https://github.com/kevi-t/Horti-Market/assets/104903442/c1c242f6-50b4-46f0-aff0-edaeaae18820)
+Product purchase page![Product purchase page](https://github.com/kevi-t/Horti-Market/assets/104903442/b23e0eab-a0eb-40b6-95f0-3468463acd68)
