@@ -1,0 +1,104 @@
+body{
+  background-color: rgb(240, 234, 234);
+}
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  overflow: hidden;
+  margin-bottom: 0;
+  border-radius: 0;
+  padding: 2px;
+}
+.bg-img {
+  /* The image used */
+  background-image: url("../images/banner.jpg");
+  /* Control the height of the image */
+  min-height: 600px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+/* Add styles to the form container */
+.container {
+  position: relative;
+  margin: 0;
+  max-width: 30%;
+  border-top: 10px;
+  background-color: white;
+  height: 100%;
+  border-radius: 10px;
+}
+.container2 {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+  background-color: white;
+  height:70%;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.radio {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  cursor: pointer;
+  width: 80%;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+.btn2 {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+.search-field{
+  padding: 15px;
+  border: none;
+}
+.btn3{
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 14px;
+  cursor: pointer;
+  width: 50px;
+  opacity: 0.9;
+}
+
+.carousel-inner img {
+  width: 100%; /* Set width to 100% */
+  margin: auto;
+  min-height:100px;
+  
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+.carousel-caption {
+  display: none; 
+}
+}
