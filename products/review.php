@@ -26,7 +26,7 @@
 
 <?php require 'menu.php';?>
 
-<div class="product-grid">
+<div class="product-container">
 
 <?php
 	$sql="SELECT * FROM fproduct WHERE pid = '$pid'";
@@ -48,12 +48,14 @@
 	   Quantity : <?= $row['quantity'].' Kg'; ?><br><br>
 	</p>
 	<div class="button-container">
-		<div class="product-button"><a href="../myCart.php?flag=1&pid=<?= $pid; ?>">Add</a></div>
-		<div class="product-button"><a href="buyNow.php?pid=<?= $pid; ?>">Buy</a></div>	
+		<button>Add</button>
+		<button>Buy</button>
+		<!-- <div class="product-button"><a href="../myCart.php?flag=1&pid=<?= $pid; ?>">Add</a></div>
+		<div class="product-button"><a href="buyNow.php?pid=<?= $pid; ?>">Buy</a></div>	 -->
     </div>				
 </div>
 
-<div class="product-card">
+<!-- <div class="product-card">
 	<h1>Product Reviews</h1>
 	<?php
 		$sql = "SELECT * FROM review WHERE pid='$pid'";
@@ -74,7 +76,7 @@
        &nbsp  &nbsp &nbsp  &nbsp Rating:<input type="number" min="0" max="10" name="rating" value="0"/><br>
 	   <br>&nbsp  &nbsp &nbsp  &nbsp<button class="btn2">submit</button>
      </form>
-</div>
+</div> -->
 
 </div>
 </body>
