@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-    if ( $_SESSION['logged_in'] != 1 )
+    if (!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] != 1)
     {
-      $_SESSION['message'] = "You must log in before viewing your profile page!";
-      header("location: authenticate/error.php");
+      header("Location: loginpage.php");
+      exit;
     }
     else
     {

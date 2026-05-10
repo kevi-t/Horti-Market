@@ -1,50 +1,47 @@
 <?php
-include('security.php');
+session_start();
+include('database/db.php');
 
-if(isset($_POST['login_btn']))
-{
-    $email_login = $_POST['emaill']; 
-    $password_login = $_POST['passwordd']; 
+if (!$conn) {
+    die("Database connection failed.");
+}
 
-    $query = "SELECT * FROM adminUser WHERE email='$email_login' AND password='$password_login' LIMIT 1";
+if (isset($_POST['login_btn'])) {
+    $email_login    = $_POST['emaill'];
+    $password_login = $_POST['passwordd'];
+
+    $query     = "SELECT * FROM adminuser WHERE email='$email_login' AND password='$password_login' LIMIT 1";
     $query_run = mysqli_query($conn, $query);
     $usertypes = mysqli_fetch_array($query_run);
 
-    if($usertypes['usertype'] == "admin")
-    {
+    if ($usertypes && $usertypes['usertype'] == "admin") {
         $_SESSION['username'] = $email_login;
         header('Location: index.php');
-    }
-    else if($usertypes['usertype'] == "user")
-    {
-        $_SESSION['cusername'] = $email_login;
-        header('Location: ../index.php');
-    }
-    else
-    {
+        exit;
+    } else {
         $_SESSION['status'] = "Email / Password is Invalid";
         header('Location: login.php');
+        exit;
     }
 }
 
-if(isset($_POST['delete_btn']))
-{
-    $id = $_POST['delete_id'];
-
-    $query = "DELETE FROM fproduct WHERE pid='$id' ";
+if (isset($_POST['delete_btn'])) {
+    if (!isset($_SESSION['username']) || !$_SESSION['username']) {
+        header('Location: login.php');
+        exit;
+    }
+    $id        = $_POST['delete_id'];
+    $query     = "DELETE FROM fproduct WHERE pid='$id'";
     $query_run = mysqli_query($conn, $query);
 
-    if($query_run)
-    {
-        $_SESSION['status'] = "Your Data is Deleted";
+    if ($query_run) {
+        $_SESSION['status']      = "Product deleted successfully";
         $_SESSION['status_code'] = "success";
-        header('Location: products.php'); 
-    }
-    else
-    {
-        $_SESSION['status'] = "Your Data is NOT DELETED";       
+    } else {
+        $_SESSION['status']      = "Failed to delete product";
         $_SESSION['status_code'] = "error";
-        header('Location: products.php'); 
-    }    
+    }
+    header('Location: products.php');
+    exit;
 }
 ?>

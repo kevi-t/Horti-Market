@@ -54,10 +54,10 @@ if($category == 1)
     }
     else
     {
-      $code = rand(999999, 111111);
+      $code = rand(111111, 999999);
       $status = "notverified";
-    	$sql = "INSERT INTO farmer (fname, fusername, fpassword, fmobile, femail, faddress, code, status)
-    			VALUES ('$name','$user','$pass','$mobile','$email','$addr','$code', '$status')";
+    	$sql = "INSERT INTO farmer (fname, fusername, fpassword, fmobile, femail, faddress, factive, frating, picExt, picStatus, code, status)
+    			VALUES ('$name','$user','$pass','$mobile','$email','$addr', 0, 0, '', 0, '$code', '$status')";
     
           $data_check = mysqli_query($conn, $sql);
           if($data_check)
@@ -70,9 +70,8 @@ if($category == 1)
                $info = "A Verification Code has been sent to your email - $email";
                $_SESSION['info'] = $info;
                $_SESSION['email'] = $email;
-               $_SESSION['password'] = $password;
                header("location: verificationpage.php");
-               
+
             }
             else
             {
@@ -85,10 +84,10 @@ if($category == 1)
             $_SESSION['message'] = "Registration failed!";
               header("location: error.php");
           }
-         
+
     }
-    
-    
+
+
 }
 
 else
@@ -107,11 +106,11 @@ else
     }
     else
     {
-      $code = rand(999999, 111111);
+      $code = rand(111111, 999999);
       $status = "notverified";
-    	$sql = "INSERT INTO buyer (bname, busername, bmobile, bemail, bpassword, baddress, code, status)
-    			VALUES ('$name','$user','$mobile','$email','$pass','$addr','$code', '$status')";
-    
+    	$sql = "INSERT INTO buyer (bname, busername, bmobile, bemail, bpassword, baddress, bactive, code, status)
+    			VALUES ('$name','$user','$mobile','$email','$pass','$addr', 0, '$code', '$status')";
+
           $data_check = mysqli_query($conn, $sql);
           if($data_check)
           {
@@ -123,7 +122,6 @@ else
                $info = "A Verification Code has been sent to your email - $email";
                $_SESSION['info'] = $info;
                $_SESSION['email'] = $email;
-               $_SESSION['password'] = $password;
                header("location: verificationpage.php");
                
             }

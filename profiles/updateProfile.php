@@ -17,9 +17,9 @@
         $_SESSION['Address'] = $address;
 
     }
-    $id = $_SESSION['fid'];
+    $id = $_SESSION['id'];
 
-    $sql = "UPDATE farmer SET fname='$name',fusername='$user',fmobile='$mobile',femail='$email' WHERE fid='$id';";
+    $sql = "UPDATE farmer SET fname='$name',fusername='$user',fmobile='$mobile',femail='$email',faddress='$address' WHERE fid='$id';";
 
     $result = mysqli_query($conn, $sql);
     if($result)

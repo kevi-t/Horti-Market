@@ -1,13 +1,12 @@
 <?php
     session_start();
 
-	require '../db.php';
+	require '../database/db.php';
 
 	if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
 	{
-		$_SESSION['message'] = "You need to first login to write a blog !!!";
-		header("Location: ../Login/error.php");
-		die();
+		header("Location: ../loginpage.php");
+		exit;
 	}
 
 
@@ -26,7 +25,7 @@
     if(!$result)
     {
         $_SESSION['message'] = "Some Error occurred !!!";
-        header("location: ../Login/error.php");
+        header("location: ../authenticate/error.php");
     }
 	else
 	{

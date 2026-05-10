@@ -3,8 +3,8 @@
 	require 'database/db.php';
 	if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
 	{
-		$_SESSION['message'] = "You need to first login to access this page !!!";
-		header("Location: authenticate/error.php");
+		header("Location: loginpage.php");
+		exit;
 	}
 
  ?>
@@ -50,6 +50,10 @@
   {
 	 $sql = "SELECT * FROM fproduct WHERE pcat = 'Grains'";
   }
+  if(isset($_GET['type']) AND $_GET['type'] == "flower")
+  {
+	 $sql = "SELECT * FROM fproduct WHERE pcat = 'Flowers'";
+  }
   $result = mysqli_query($conn, $sql);
 ?>
 <?php
@@ -65,8 +69,8 @@
             <?php echo "Quantity : ".$row['quantity'].' Kg';?>
           </p>
           <div class="button-container">
-            <button onclick="buyNow()">Buy</button>
-            <button onclick="addToCart()">Cart</button>
+            <a href="products/buyNow.php?pid=<?= $row['pid'] ?>"><button>Buy</button></a>
+            <a href="myCart.php?flag=1&pid=<?= $row['pid'] ?>"><button>Cart</button></a>
            </div>
         </div>
         <?php endwhile;	?>

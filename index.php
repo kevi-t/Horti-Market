@@ -30,7 +30,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active" >
-        <img src="Assets/images/bgimage.jpg" alt="Image">
+        <img src="assets/images/bgimage.jpg" alt="Image">
         <div class="carousel-caption">
           <h3>Sell $</h3>
           <p>Money Money.</p>
@@ -38,7 +38,7 @@
       </div>
 
       <div class="item">
-        <img src="Assets/images/display.jpg" alt="Image">
+        <img src="assets/images/display.jpg" alt="Image">
         <div class="carousel-caption">
           <h3>More Sell $</h3>
           <p>Market your products...</p>
@@ -61,11 +61,11 @@
   <h3>Digital Market for Selling Horticulture farm produce</h3><br>
   <div class="row">
     <div class="col-sm-4">
-      <img src="Assets/images/display2.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <img src="assets/images/display2.jpg" class="img-responsive" style="width:100%" alt="Image">
       <p>Fresh Fruits and Vegetables</p>
     </div>
     <div class="col-sm-4"> 
-      <img src="Assets/images/regimage.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <img src="assets/images/regimage.jpg" class="img-responsive" style="width:100%" alt="Image">
       <p> Horticulture Farmer </p>    
     </div>
     <div class="col-sm-4">

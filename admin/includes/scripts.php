@@ -30,7 +30,7 @@ if(isset($_POST['registerbtn']))
 
     if($password === $confirm_password)
     {
-        $query = "INSERT INTO adminUser (username,email,password) VALUES ('$username','$email','$password')";
+        $query = "INSERT INTO adminuser (username,email,password) VALUES ('$username','$email','$password')";
         $query_run = mysqli_query($conn, $query);
     
         if($query_run)

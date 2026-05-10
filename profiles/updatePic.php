@@ -29,7 +29,7 @@
                     move_uploaded_file($picTmpName, $picDestination);
                     $id = $_SESSION['id'];
 
-                    $sql = "UPDATE members SET picStatus=1, picExt='$picActualExt' WHERE id='$id';";
+                    $sql = "UPDATE farmer SET picStatus=1, picExt='$picActualExt' WHERE fid='$id';";
 
                     $result = mysqli_query($conn, $sql);
                     if($result)
@@ -57,7 +57,7 @@
         }
         else if(isset($_POST['remove']) AND $_SESSION['picId'] != 0)
         {
-            $picToRemove = "../images/profileImages/".$_SESSION['picName'];
+            $picToRemove = "../assets/images/profileImages/".$_SESSION['picName'];
             if(!unlink($picToRemove))
             {
                 $_SESSION['message'] = "There was an error in deleting the profile picture!";
@@ -67,7 +67,7 @@
             {
                 $_SESSION['message'] = "The profile picture was successfully deleted!";
                 $id = $_SESSION['id'];
-                $sql = "UPDATE members SET picStatus=0, picExt='png' WHERE id='$id';";
+                $sql = "UPDATE farmer SET picStatus=0, picExt='png' WHERE fid='$id';";
                 $_SESSION['picId'] = 0;
                 $_SESSION['picExt'] = "png";
                 $_SESSION['picName'] = "profile0.png";

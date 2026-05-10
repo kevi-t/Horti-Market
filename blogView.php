@@ -5,8 +5,8 @@
 
 	if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
 	{
-		$_SESSION['message'] = "You need to first login to access this page !!!";
-		header("Location: authenticate/error.php");
+		header("Location: loginpage.php");
+		exit;
 	}
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_SESSION['logged_in']) AND $_SESSION['logged_in'] == 1)
@@ -128,9 +128,9 @@
 <form method="post" action="blogView.php" class="product-card">				
 	<h2><?= $row['blogTitle']; ?></h2>
 	<p><?= $row['blogContent']; ?><br>--- <?= $row['blogUser']; ?><?= $row['blogTime']; ?></p>
-	<button class="btn3" name="<?php echo 'like'.$id; ?>">Like</button><?= $row['likes']?>Comments : <?= $numComment ?></button>
+	<button class="btn3" name="<?php echo 'like'.$id; ?>">Like</button> <?= $row['likes'] ?> &nbsp; Comments: <?= $numComment ?>
 	<textarea name="comment" id="comment" rows="1" placeholder="Write a Comment!"></textarea>
-	<button class="btn3"><?php echo 'submit'.$id; ?></button>
+	<button class="btn3" name="<?php echo 'submit'.$id; ?>">Submit</button>
 	<a href="blog/blogWrite.php"> <button class="btn3"> write</button></a>
 
 <?php

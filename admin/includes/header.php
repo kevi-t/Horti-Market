@@ -18,6 +18,25 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+  <style>
+    .bg-gradient-primary {
+      background-color: #04AA6D !important;
+      background-image: linear-gradient(180deg, #04AA6D 10%, #028a56 100%) !important;
+    }
+    .sidebar .nav-item.active .nav-link,
+    .sidebar .nav-item:hover .nav-link {
+      background-color: rgba(255,255,255,0.15) !important;
+    }
+    .btn-primary {
+      background-color: #04AA6D !important;
+      border-color: #04AA6D !important;
+    }
+    .btn-primary:hover {
+      background-color: #028a56 !important;
+      border-color: #028a56 !important;
+    }
+  </style>
+
 </head>
 
 <body id="page-top">

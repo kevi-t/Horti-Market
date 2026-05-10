@@ -15,7 +15,7 @@ include('includes/navbar.php');
         <div class="card-body">
             <div class="table-responsive">
             <?php
-                $query = "SELECT * FROM adminUser";
+                $query = "SELECT * FROM adminuser";
                 $query_run = mysqli_query($conn, $query);
             ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

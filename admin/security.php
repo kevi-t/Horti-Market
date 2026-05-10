@@ -2,16 +2,12 @@
 session_start();
 include('database/db.php');
 
-if($conn)
-{
-    // echo "Database Connected";
+if (!$conn) {
+    die("Database connection failed. Please check your database configuration.");
 }
-else
-{
-    header("Location: database/db.php");
-}
-if(!$_SESSION['username'])
-{
+
+if (!isset($_SESSION['username']) || !$_SESSION['username']) {
     header('Location: login.php');
+    exit;
 }
 ?>

@@ -5,10 +5,10 @@
 		$logo = "glyphicon glyphicon-user";
 		if($_SESSION['Category']!= 1)
 		{
-			$link = "profile/profile.php";
+			$link = "profiles/profile.php";
 		}
 		else {
-				$link = "profile/profileView.php";
+				$link = "profileView.php";
 		}
 	}
 	else
@@ -39,9 +39,13 @@
         <li><a href="blogView.php"><span class="glyphicon glyphicon-comment"></span> BLOG</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="Admin"><span class="glyphicon glyphicon-user"></span>  ADMIN</a></li>
-        <li><a href="loginpage.php"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
-        <li><a href="signuppage.php"><span class="glyphicon glyphicon-user"></span> REGISTER</a></li> 
+        <?php if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1): ?>
+          <li><a href="<?php echo $link; ?>"><span class="<?php echo $logo; ?>"></span> <?php echo $loginProfile; ?></a></li>
+          <li><a href="authenticate/logout.php"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
+        <?php else: ?>
+          <li><a href="loginpage.php"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+          <li><a href="signuppage.php"><span class="glyphicon glyphicon-user"></span> REGISTER</a></li>
+        <?php endif; ?>
       </ul>
     </div>
   </div>

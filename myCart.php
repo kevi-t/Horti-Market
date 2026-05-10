@@ -3,17 +3,21 @@
 	require 'database/db.php';
     if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
 	{
-		$_SESSION['message'] = "You need to first login to access this page !!!";
-		header("Location: authenticate/error.php");
+		header("Location: loginpage.php");
+		exit;
 	}
     $bid = $_SESSION['id'];
     if(isset($_GET['flag']))
     {
-        $pid = $_GET['pid'];
-
-        $sql = "INSERT INTO mycart (bid,pid)
-               VALUES ('$bid', '$pid')";
-        $result = mysqli_query($conn, $sql);
+        $pid = (int)$_GET['pid'];
+        $sql = "INSERT INTO mycart (bid,pid) VALUES ('$bid', '$pid')";
+        mysqli_query($conn, $sql);
+    }
+    if(isset($_GET['remove']))
+    {
+        $pid = (int)$_GET['pid'];
+        $sql = "DELETE FROM mycart WHERE bid='$bid' AND pid='$pid'";
+        mysqli_query($conn, $sql);
     }
 
 ?>
@@ -71,8 +75,8 @@
   </p>		
 
   <div class="button-container">
-    <button onclick="buyNow()">Buy</button>
-    <button onclick="addToCart()">Remove</button>
+    <a href="products/buyNow.php?pid=<?= $row1['pid'] ?>"><button>Buy</button></a>
+    <a href="myCart.php?remove=1&pid=<?= $row1['pid'] ?>"><button>Remove</button></a>
   </div>			
 
 </div>

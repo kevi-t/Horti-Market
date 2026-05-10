@@ -23,7 +23,7 @@
     <?php require 'menu.php';?>
     <div class="bg-img">
     <center>
-    <form method="post" action="updatePic.php" class="container">
+    <form method="post" action="updatePic.php" enctype="multipart/form-data" class="container">
     <h2>Update Profile Picture Here..!!</h2>
        <header>
         
@@ -32,8 +32,8 @@
           
           <!-- <form method="post" action="updatePic.php" enctype="multipart/form-data"> -->
           <input type="file" name="profilePic" id="profilePic"><br>
-          <button class="btn">Upload Pic</button>
-          <button class="btn">Remove Pic</button>
+          <button class="btn" name="upload" type="submit">Upload Pic</button>
+          <button class="btn" name="remove" type="submit">Remove Pic</button>
          <!-- </form> -->
            
       </header> 

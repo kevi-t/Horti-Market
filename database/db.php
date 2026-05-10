@@ -1,8 +1,8 @@
 <?php
 
     $serverName = "localhost";
-    $userName = "root";
-    $password = "";
+    $userName = "horti";
+    $password = "horti1234";
     $dbName = "horticulture-market";
 
     $conn = mysqli_connect($serverName, $userName, $password, $dbName);

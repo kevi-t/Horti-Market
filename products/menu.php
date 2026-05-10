@@ -5,7 +5,7 @@
 		$logo = "glyphicon glyphicon-user";
 		if($_SESSION['Category']!= 1)
 		{
-			$link = "profile.php";
+			$link = "../profiles/profile.php";
 		}
 		else {
 				$link = "../profileView.php";
@@ -40,8 +40,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 	     <li><a href="productSearch.php">SEARCH</a></li> 
-      	 <li><a href="../profileView.php"><span class="glyphicon glyphicon-user"></span> <?php echo" ". $loginProfile; ?></a></li>
-	     <li><a href="../authenticate/logout.php">LOG OUT</a></li> 
+      	 <li><a href="<?php echo $link; ?>"><span class="<?php echo $logo; ?>"></span> <?php echo $loginProfile; ?></a></li>
+	     <li><a href="../authenticate/logout.php"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
       </ul>
     </div>
   </div>

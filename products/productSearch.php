@@ -26,13 +26,14 @@
 		
 <div class="bg-img" >
     <center>
-	<form method="post" action="productMenu.php" class="search-container">
+	<form method="get" action="productMenu.php" class="search-container">
 		<h2>Select Filter</h2><br>
 		<input type="text" placeholder="Search" class="search-field"> <button class="search-button" type="submit">Go</button><br>
-		<label><h2 style="font-size: 120%;">List All &nbsp</h2></label><input type="radio" id="priority-low" value="all" name="priority" checked>
-		<label><h2 style="font-size: 120%;">Flowers &nbsp</h2></label><input type="radio" id="priority-low" value="flower" name="priority">
-		<label><h2 style="font-size: 120%;">Fruits &nbsp</h2></label><input type="radio" id="priority-normal" value="fruit" name="priority">
-		<label><h2 style="font-size: 120%;"> Vegetables &nbsp</h2></label><input type="radio" id="priority-high" value="vegetable" name="priority">
+		<label><h2 style="font-size: 120%;">List All &nbsp</h2></label><input type="radio" id="type-all" value="all" name="type" checked>
+		<label><h2 style="font-size: 120%;">Flowers &nbsp</h2></label><input type="radio" id="type-flower" value="flower" name="type">
+		<label><h2 style="font-size: 120%;">Fruits &nbsp</h2></label><input type="radio" id="type-fruit" value="fruit" name="type">
+		<label><h2 style="font-size: 120%;">Grains &nbsp</h2></label><input type="radio" id="type-grain" value="grain" name="type">
+		<label><h2 style="font-size: 120%;"> Vegetables &nbsp</h2></label><input type="radio" id="type-vegetable" value="vegetable" name="type">
 
 	</form>
     </center>

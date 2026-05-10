@@ -24,7 +24,7 @@
 <div class="bg-img">
 <center>
 
-	<form method="post" action="Blog/blogSubmit.php">
+	<form method="post" action="blogSubmit.php">
         <section id="main" class="wrapper">
             <div class="inner">
 				<div class="container" style="width: 70%">

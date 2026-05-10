@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-    if ( $_SESSION['logged_in'] != 1 )
+    if (!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] != 1)
     {
-      $_SESSION['message'] = "You must log in before viewing your profile page!";
-      header("location: error.php");
+      header("Location: ../loginpage.php");
+      exit;
     }
     else
     {
@@ -31,7 +31,7 @@
   <script src="../assets/js/bootstrap.min.js"></script> 
   </head>
 
-<?php  require '../includes/menu2.php'; ?>
+<?php  require 'menu.php'; ?>
 
 <body>
 

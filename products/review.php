@@ -48,19 +48,17 @@
 	   Quantity : <?= $row['quantity'].' Kg'; ?><br><br>
 	</p>
 	<div class="button-container">
-		<button>Add</button>
-		<button>Buy</button>
-		<!-- <div class="product-button"><a href="../myCart.php?flag=1&pid=<?= $pid; ?>">Add</a></div>
-		<div class="product-button"><a href="buyNow.php?pid=<?= $pid; ?>">Buy</a></div>	 -->
+		<a href="../myCart.php?flag=1&pid=<?= $pid; ?>"><button>Add to Cart</button></a>
+		<a href="buyNow.php?pid=<?= $pid; ?>"><button>Buy Now</button></a>
     </div>				
 </div>
 
-<!-- <div class="product-card">
+<div class="product-card">
 	<h1>Product Reviews</h1>
 	<?php
 		$sql = "SELECT * FROM review WHERE pid='$pid'";
 		$result = mysqli_query($conn, $sql);
-	?>	
+	?>
 	<?php
 		if($result) :
 			while($row1 = $result->fetch_array()) :
@@ -68,15 +66,15 @@
 	<p>
 	   <?= $row1['comment']; ?>
 	   <?php echo "Rating : ".$row1['rating'].' out of 10';?>
-	   <?php echo "From: ".$row1['name']; ?></span>	<?php endwhile; endif;?><br>
-	   <h3> Rate this product</h3><br>
+	   <?php echo "From: ".$row1['name']; ?><?php endwhile; endif;?><br>
+	   <h3>Rate this product</h3><br>
 	</p>
     <form class="container2" method="POST" action="reviewInput.php?pid=<?= $pid; ?>">
-	   <br><br>&nbsp  &nbsp &nbsp  &nbsp <textarea placeholder="Write a review"></textarea>
-       &nbsp  &nbsp &nbsp  &nbsp Rating:<input type="number" min="0" max="10" name="rating" value="0"/><br>
-	   <br>&nbsp  &nbsp &nbsp  &nbsp<button class="btn2">submit</button>
+	   <br><br><textarea name="comment" placeholder="Write a review"></textarea>
+       Rating:<input type="number" min="0" max="10" name="rating" value="0"/><br>
+	   <br><button class="btn2">Submit</button>
      </form>
-</div> -->
+</div>
 
 </div>
 </body>

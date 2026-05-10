@@ -108,7 +108,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
    <option value="" style="color: black;">Choose Category</option>
    <option value="Fruit" style="color: black;">Fruit</option>
    <option value="Vegetable" style="color: black;">Vegetable</option>
-   <option value="Grains" style="color: black;">Flowers</option>
+   <option value="Flowers" style="color: black;">Flowers</option>
+   <option value="Grains" style="color: black;">Grains</option>
 </select>
 <label>Choose Image<input type="file" name="productPic" required></input><br></label>
 <button class="btn">Submit</button>		
