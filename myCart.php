@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require 'database/db.php';
-    if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
+    if(!isset($_SESSION['logged_in']) OR !$_SESSION['logged_in'])
 	{
 		header("Location: loginpage.php");
 		exit;

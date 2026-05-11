@@ -1,6 +1,10 @@
-<?php 
+<?php
     session_start();
     require '../database/db.php';
+    if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+        header("Location: ../loginpage.php");
+        exit;
+    }
     $pid = $_GET['pid'];
 ?>
 

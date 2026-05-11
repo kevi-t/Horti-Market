@@ -10,11 +10,11 @@
         $email = dataFilter($_POST['email']);
         $address = dataFilter($_POST['address']);
 
-        $_SESSION['Email'] = $email;
-        $_SESSION['Name'] = $name;
+        $_SESSION['Email']    = $email;
+        $_SESSION['Name']     = $name;
         $_SESSION['Username'] = $user;
-        $_SESSION['MobileNo'] = $mobile;
-        $_SESSION['Address'] = $address;
+        $_SESSION['Mobile']   = $mobile;
+        $_SESSION['Addr']     = $address;
 
     }
     $id = $_SESSION['id'];

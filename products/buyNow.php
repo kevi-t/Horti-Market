@@ -49,11 +49,9 @@
     <?php
         require 'menu.php';
     ?>
-
-<body>
 <div class="bg-img">
  <center>
- <form action="buyNow.php" method='POST' class="container">
+ <form action="buyNow.php" method='POST' class="auth-card">
         <h2>Transaction Details</h2>
         <div class="form-group">
             <input class="form-control" type="text" name="name" id="name" value="" placeholder="Name" required/>

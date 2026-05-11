@@ -1,7 +1,7 @@
 <?php
  	session_start();
 	require 'database/db.php';
-	if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
+	if(!isset($_SESSION['logged_in']) OR !$_SESSION['logged_in'])
 	{
 		header("Location: loginpage.php");
 		exit;
@@ -32,48 +32,58 @@
 <body>
 
 <div class="product-container">
-  			
+
+<?php if ($search !== ''): ?>
+  <p style="width:100%;padding:10px 0 0 10px;color:#333;font-weight:600;">
+    <?= $count ?> result<?= $count !== 1 ? 's' : '' ?> for &ldquo;<?= htmlspecialchars($search) ?>&rdquo;
+    &nbsp;<a href="market.php">Clear</a>
+  </p>
+<?php endif; ?>
+
 <?php
-  if(!isset($_GET['type']) OR $_GET['type'] == "all")
-   {
-	  $sql = "SELECT * FROM fproduct WHERE 1";
-   }
-  if(isset($_GET['type']) AND $_GET['type'] == "fruit")
-  {
-   $sql = "SELECT * FROM fproduct WHERE pcat = 'Fruit'";
-  }
-  if(isset($_GET['type']) AND $_GET['type'] == "vegetable")
-  {
+  $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+  if ($search !== '') {
+    $s = mysqli_real_escape_string($conn, $search);
+    $sql = "SELECT * FROM fproduct WHERE product LIKE '%$s%' OR pcat LIKE '%$s%'";
+  } elseif (!isset($_GET['type']) || $_GET['type'] === 'all') {
+    $sql = "SELECT * FROM fproduct WHERE 1";
+  } elseif ($_GET['type'] === 'fruit') {
+    $sql = "SELECT * FROM fproduct WHERE pcat = 'Fruit'";
+  } elseif ($_GET['type'] === 'vegetable') {
     $sql = "SELECT * FROM fproduct WHERE pcat = 'Vegetable'";
+  } elseif ($_GET['type'] === 'grain') {
+    $sql = "SELECT * FROM fproduct WHERE pcat = 'Grains'";
+  } elseif ($_GET['type'] === 'flower') {
+    $sql = "SELECT * FROM fproduct WHERE pcat = 'Flowers'";
+  } else {
+    $sql = "SELECT * FROM fproduct WHERE 1";
   }
-  if(isset($_GET['type']) AND $_GET['type'] == "grain")
-  {
-	 $sql = "SELECT * FROM fproduct WHERE pcat = 'Grains'";
-  }
-  if(isset($_GET['type']) AND $_GET['type'] == "flower")
-  {
-	 $sql = "SELECT * FROM fproduct WHERE pcat = 'Flowers'";
-  }
+
   $result = mysqli_query($conn, $sql);
+  $count  = mysqli_num_rows($result);
 ?>
-<?php
-   while($row = $result->fetch_array()):
+<?php if ($count === 0): ?>
+  <p style="width:100%;padding:20px;color:#666;">No products found.</p>
+<?php endif; ?>
+
+<?php while($row = $result->fetch_array()):
    $picDestination = "assets/images/productImages/".$row['pimage'];
-?>	
+?>
         <div class="product-card">
-          <a href="products/review.php?pid=<?php echo $row['pid'] ;?>"><img src="<?php echo $picDestination;?>"/></a>
-          <h3><?php echo $row['product'].'';?></h3>
+          <a href="products/review.php?pid=<?= $row['pid'] ?>"><img src="<?= $picDestination ?>"/></a>
+          <h3><?= htmlspecialchars($row['product']) ?></h3>
           <p>
-            <?php echo "Type : ".$row['pcat'].'';?><br>
-            <?php echo "Price : ".$row['price'].' Ksh';?><br>
-            <?php echo "Quantity : ".$row['quantity'].' Kg';?>
+            Type : <?= htmlspecialchars($row['pcat']) ?><br>
+            Price : <?= htmlspecialchars($row['price']) ?> Ksh<br>
+            Quantity : <?= htmlspecialchars($row['quantity']) ?> Kg
           </p>
           <div class="button-container">
             <a href="products/buyNow.php?pid=<?= $row['pid'] ?>"><button>Buy</button></a>
             <a href="myCart.php?flag=1&pid=<?= $row['pid'] ?>"><button>Cart</button></a>
-           </div>
+          </div>
         </div>
-        <?php endwhile;	?>
+<?php endwhile; ?>
 </div>
 
   						

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/footer.css" />
+  <link rel="stylesheet" href="assets/css/menu.css" />
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
 </head>
@@ -57,63 +58,33 @@
     </a>
 </div>
   
-<div class="container text-center">    
+<div style="background-color:#fff; padding: 20px 0;">
+<div class="container text-center">
   <h3>Digital Market for Selling Horticulture farm produce</h3><br>
   <div class="row">
     <div class="col-sm-4">
       <img src="assets/images/display2.jpg" class="img-responsive" style="width:100%" alt="Image">
       <p>Fresh Fruits and Vegetables</p>
     </div>
-    <div class="col-sm-4"> 
+    <div class="col-sm-4">
       <img src="assets/images/regimage.jpg" class="img-responsive" style="width:100%" alt="Image">
-      <p> Horticulture Farmer </p>    
+      <p>Horticulture Farmer</p>
     </div>
     <div class="col-sm-4">
       <div class="well">
-       <p>Horticulture is e-commerce trading platform for Fruits,Vegetables & Flowers...</p>
+       <p>Horticulture is e-commerce trading platform for Fruits, Vegetables &amp; Flowers.</p>
       </div>
       <div class="well">
-       <p>Explore the new way of trading... by Registering with us</p>
+       <p>Explore the new way of trading — register with us today.</p>
       </div>
     </div>
   </div>
+</div>
 </div><br>
 
 </body>
 
 <?php require 'includes/footer.php'; ?>
 
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      overflow: hidden;
-      margin-bottom: 0;
-      border-radius: 0;
-      padding: 5px;
-    }
-    
-    .button {
-      background-color: green;
-    }
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #000000;
-      padding: 25px;
-    }
-    
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      height: auto;
-      
-  }
-
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
-  </style>
 
 </html>

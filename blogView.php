@@ -3,13 +3,13 @@
 
 	require 'database/db.php';
 
-	if(!isset($_SESSION['logged_in']) OR $_SESSION['logged_in'] == 0)
+	if(!isset($_SESSION['logged_in']) OR !$_SESSION['logged_in'])
 	{
 		header("Location: loginpage.php");
 		exit;
 	}
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_SESSION['logged_in']) AND $_SESSION['logged_in'] == 1)
+	if ($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_SESSION['logged_in']) AND $_SESSION['logged_in'])
 	{
 		if(isset($_POST['comment']) AND $_POST['comment'] != "")
 		{
@@ -27,7 +27,7 @@
 			}
 
 			$comment = dataFilter($_POST['comment']);
-			if(isset($_SESSION['logged_in']) AND $_SESSION['logged_in'] == 1)
+			if(isset($_SESSION['logged_in']) AND $_SESSION['logged_in'])
 			{
 				$commentUser = $_SESSION['Username'];
 				$pic = $_SESSION['picName'];

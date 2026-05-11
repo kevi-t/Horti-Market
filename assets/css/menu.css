@@ -1,28 +1,182 @@
-body{
-  background-color: #1a1a1a;
-  background-image: url("../images/banner.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-/* Remove the navbar's default margin-bottom and rounded borders */ 
+/* =============================================
+   Navbar
+   ============================================= */
 .navbar {
-  overflow: hidden;
   margin-bottom: 0;
   border-radius: 0;
-  padding: 2px;
+  border: none;
+  overflow: hidden;
 }
+
+.navbar .navbar-brand {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Dropdown menu in navbar */
+.navbar .dropdown-menu {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* =============================================
+   Background wrapper for auth pages
+   ============================================= */
 .bg-img {
-  background-image: url("../images/banner.jpg");
   flex: 1;
-  min-height: 400px;
+  background-image: url("../images/banner.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
 }
-/* Add styles to the form container */
-.container {
+
+/* =============================================
+   Auth card  (login / register)
+   ============================================= */
+.auth-card {
+  width: 100%;
+  max-width: 640px;
+  background-color: white;
+  padding: 70px 45px 60px;
+  border-radius: 10px;
+  box-shadow: 0 0 28px rgba(0, 0, 0, 0.30);
+}
+
+.auth-card h2 {
+  text-align: center;
+  color: #1a1a1a;
+  font-weight: 800;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.auth-card .auth-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.auth-card .auth-subtitle a {
+  color: #04AA6D;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-card .auth-subtitle a:hover {
+  text-decoration: underline;
+}
+
+.auth-card .form-group {
+  margin-bottom: 20px;
+}
+
+.auth-card .form-group label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.auth-card .form-control {
+  background: #f0f4f8;
+  border: 1px solid #dde3ea;
+  border-radius: 5px;
+  color: #1a1a1a;
+  font-size: 14px;
+  height: 48px;
+  padding: 10px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-card .form-control:focus {
+  border-color: #04AA6D;
+  background-color: #f7fff9;
+  box-shadow: 0 0 0 3px rgba(4, 170, 109, 0.15);
+  outline: none;
+}
+
+.auth-card .form-control::placeholder {
+  color: #999;
+}
+
+.auth-card .btn-submit {
+  display: block;
+  width: 100%;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.auth-card .btn-submit:hover {
+  background-color: #038a57;
+}
+
+.auth-card hr {
+  margin: 20px 0;
+  border-color: #e8e8e8;
+}
+
+.auth-card .auth-footer-text {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #555;
+}
+
+.auth-card .auth-footer-text a {
+  color: #04AA6D;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-card .auth-footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* Category role cards (signup) */
+.category-card {
+  cursor: pointer;
+  background: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 14px 28px;
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.category-card:hover {
+  background: #e0e0e0;
+  border-color: #04AA6D;
+}
+
+.category-card.selected {
+  border-color: #04AA6D;
+  background: rgba(4, 170, 109, 0.12);
+  color: #027a4d;
+}
+
+/* =============================================
+   Form card (used in buyNow etc.)
+   ============================================= */
+.form-card {
   position: relative;
   margin: 0;
   max-width: 30%;
@@ -30,36 +184,60 @@ body{
   background-color: white;
   height: 100%;
   border-radius: 10px;
+  padding: 10px 30px 20px;
 }
+
+.form-card h2 {
+  color: #1a1a1a;
+  font-weight: 700;
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+
+.form-card > p,
+.form-card label {
+  color: #333;
+  font-weight: 600;
+}
+
 .container2 {
   position: relative;
   margin: 0;
   width: 100%;
   border-radius: 0;
   background-color: white;
-  height:70%;
+  height: 70%;
 }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
+/* =============================================
+   Generic input fields (non-auth-card pages)
+   ============================================= */
+input[type=text], input[type=password], input[type=email] {
   width: 80%;
   padding: 15px;
   margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
-.radio {
-  height: 15px;
-  width: 15px;
-  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f7f7f7;
+  color: #1a1a1a;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
+input[type=text]::placeholder,
+input[type=password]::placeholder,
+input[type=email]::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+  background-color: #e8e8e8;
+  border-color: #04AA6D;
   outline: none;
 }
 
-/* Set a style for the submit button */
+/* =============================================
+   Generic buttons (non-auth-card pages)
+   ============================================= */
 .btn {
   background-color: #04AA6D;
   color: white;
@@ -68,7 +246,10 @@ input[type=text]:focus, input[type=password]:focus {
   width: 80%;
   opacity: 0.9;
   margin-bottom: 30px;
+  font-weight: 700;
+  border-radius: 5px;
 }
+
 .btn2 {
   background-color: #04AA6D;
   color: white;
@@ -77,11 +258,8 @@ input[type=text]:focus, input[type=password]:focus {
   width: 20%;
   opacity: 0.9;
 }
-.search-field{
-  padding: 15px;
-  border: none;
-}
-.btn3{
+
+.btn3 {
   background-color: #04AA6D;
   color: white;
   padding: 12px 14px;
@@ -90,16 +268,22 @@ input[type=text]:focus, input[type=password]:focus {
   opacity: 0.9;
 }
 
-.carousel-inner img {
-  width: 100%; /* Set width to 100% */
-  margin: auto;
-  min-height:100px;
-  
+.search-field {
+  padding: 15px;
+  border: none;
 }
 
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media (max-width: 600px) {
-.carousel-caption {
-  display: none; 
+/* =============================================
+   Carousel
+   ============================================= */
+.carousel-inner img {
+  width: 100%;
+  margin: auto;
+  min-height: 100px;
 }
+
+@media (max-width: 600px) {
+  .carousel-caption {
+    display: none;
+  }
 }
