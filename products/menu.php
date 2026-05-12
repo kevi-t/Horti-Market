@@ -24,17 +24,6 @@
         <li><a href="../blogView.php"><span class="glyphicon glyphicon-comment"></span> Blog</a></li>
       </ul>
 
-      <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
-      <form class="navbar-form navbar-left" method="GET" action="../market.php">
-        <div class="input-group" style="width:220px;">
-          <input type="text" class="form-control" name="search" placeholder="Search products…" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-        </div>
-      </form>
-      <?php endif; ?>
-
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
           <li class="dropdown">
@@ -55,7 +44,19 @@
           <li><a href="../signuppage.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>
         <?php endif; ?>
       </ul>
+
+      <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+      <form class="navbar-form navbar-right" method="GET" action="../market.php">
+        <div class="input-group" style="width:260px;">
+          <input type="text" class="form-control" name="search" placeholder="Search products…" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+          <span class="input-group-btn">
+            <button class="btn" type="submit" style="background-color:#04AA6D;color:white;border-color:#04AA6D;width:auto;padding:6px 10px;margin-bottom:0;border-radius:0 4px 4px 0;"><span class="glyphicon glyphicon-search"></span></button>
+          </span>
+        </div>
+      </form>
+      <?php endif; ?>
     </div>
   </div>
 </nav>
 </header>
+<?php require __DIR__ . '/../includes/flash.php'; ?>

@@ -1,49 +1,26 @@
-<?php session_start();?>
-<!DOCTYPE html>
-<html >
-  <head>
-  <title>Horticulture</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/css/footer.css" />
-  <link rel="stylesheet" href="../assets/css/menu.css" />
-  <script src="../assets/js/jquery.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
-  </head>
+<?php
+session_start();
 
-<?php  require 'menu.php'; ?>
+if (empty($_SESSION['message'])) {
+    $_SESSION['message'] = 'Something went wrong. Please try again.';
+}
 
-<body>
+$referer = $_SERVER['HTTP_REFERER'] ?? '';
 
-<div class="bg-img">
- <center>   
- <div class="container">
-  
-   <h3>ERROR</h3>
-       <p>
-            <?php
-                $page = $_SERVER['HTTP_REFERER'];
-                if(isset($_SESSION['message']) AND !empty($_SESSION['message']))
-                {
-                  echo $_SESSION['message'];
-                }
-                else
-                {
-                   header("Location: ../index.php");
-                }
-            ?>
-        </p><br />
-        <a href ="<?= $page ?>" class="btn">Retry</a>
-        <?php $_SESSION['message'] = ""; ?>
-     
- </div>     
- </center> 
-</div>
+// Route back to the page that triggered the error
+if (strpos($referer, 'signuppage') !== false || strpos($referer, 'signUp') !== false) {
+    $redirect = '../signuppage.php';
+} elseif (strpos($referer, 'uploadProduct') !== false) {
+    $redirect = '../products/uploadProduct.php';
+} elseif (strpos($referer, 'buyNow') !== false) {
+    $redirect = $referer;
+} elseif (strpos($referer, 'updateProfile') !== false) {
+    $redirect = $referer;
+} elseif (strpos($referer, 'loginpage') !== false || strpos($referer, 'login') !== false) {
+    $redirect = '../loginpage.php';
+} else {
+    $redirect = '../loginpage.php';
+}
 
-</body>
-
-<?php  require '../includes/footer.php'; ?>
-
-</html>
+header('Location: ' . $redirect);
+exit;

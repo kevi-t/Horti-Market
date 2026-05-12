@@ -1,35 +1,53 @@
 <?php
- 	session_start();
-	require 'database/db.php';
-	if(!isset($_SESSION['logged_in']) OR !$_SESSION['logged_in'])
-	{
-		header("Location: loginpage.php");
-		exit;
-	}
+    session_start();
+    require 'database/db.php';
+    if (!isset($_SESSION['logged_in']) OR !$_SESSION['logged_in']) {
+        header("Location: loginpage.php");
+        exit;
+    }
 
- ?>
+    $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+    if ($search !== '') {
+        $s   = mysqli_real_escape_string($conn, $search);
+        $sql = "SELECT * FROM fproduct WHERE product LIKE '%$s%' OR pcat LIKE '%$s%'";
+    } elseif (!isset($_GET['type']) || $_GET['type'] === 'all') {
+        $sql = "SELECT * FROM fproduct WHERE 1";
+    } elseif ($_GET['type'] === 'fruit') {
+        $sql = "SELECT * FROM fproduct WHERE pcat = 'Fruit'";
+    } elseif ($_GET['type'] === 'vegetable') {
+        $sql = "SELECT * FROM fproduct WHERE pcat = 'Vegetable'";
+    } elseif ($_GET['type'] === 'grain') {
+        $sql = "SELECT * FROM fproduct WHERE pcat = 'Grains'";
+    } elseif ($_GET['type'] === 'flower') {
+        $sql = "SELECT * FROM fproduct WHERE pcat = 'Flowers'";
+    } else {
+        $sql = "SELECT * FROM fproduct WHERE 1";
+    }
+
+    $result = mysqli_query($conn, $sql);
+    $count  = mysqli_num_rows($result);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Horticulture</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://kit.fontawesome.com/8fd23289ed.js" crossorigin="anonymous"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Horticulture</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/footer.css"/>
         <link rel="stylesheet" href="assets/css/menu.css">
-        <!-- <link rel="stylesheet" href="assets/css/product.css"> -->
         <link rel="stylesheet" href="assets/css/product1.css">
         <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>   
+        <script src="assets/js/bootstrap.min.js"></script>
     </head>
 
-<?php require 'includes/menu2.php'; ?>
-	
 <body>
+
+<?php require 'includes/menu2.php'; ?>
 
 <div class="product-container">
 
@@ -39,30 +57,6 @@
     &nbsp;<a href="market.php">Clear</a>
   </p>
 <?php endif; ?>
-
-<?php
-  $search = isset($_GET['search']) ? trim($_GET['search']) : '';
-
-  if ($search !== '') {
-    $s = mysqli_real_escape_string($conn, $search);
-    $sql = "SELECT * FROM fproduct WHERE product LIKE '%$s%' OR pcat LIKE '%$s%'";
-  } elseif (!isset($_GET['type']) || $_GET['type'] === 'all') {
-    $sql = "SELECT * FROM fproduct WHERE 1";
-  } elseif ($_GET['type'] === 'fruit') {
-    $sql = "SELECT * FROM fproduct WHERE pcat = 'Fruit'";
-  } elseif ($_GET['type'] === 'vegetable') {
-    $sql = "SELECT * FROM fproduct WHERE pcat = 'Vegetable'";
-  } elseif ($_GET['type'] === 'grain') {
-    $sql = "SELECT * FROM fproduct WHERE pcat = 'Grains'";
-  } elseif ($_GET['type'] === 'flower') {
-    $sql = "SELECT * FROM fproduct WHERE pcat = 'Flowers'";
-  } else {
-    $sql = "SELECT * FROM fproduct WHERE 1";
-  }
-
-  $result = mysqli_query($conn, $sql);
-  $count  = mysqli_num_rows($result);
-?>
 <?php if ($count === 0): ?>
   <p style="width:100%;padding:20px;color:#666;">No products found.</p>
 <?php endif; ?>

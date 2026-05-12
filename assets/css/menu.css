@@ -210,6 +210,16 @@
 }
 
 /* =============================================
+   Navbar search — reset generic input overrides
+   ============================================= */
+.navbar-form input[type=text] {
+  height: 34px;
+  padding: 6px 12px;
+  margin: 0;
+  width: 100%;
+}
+
+/* =============================================
    Generic input fields (non-auth-card pages)
    ============================================= */
 input[type=text], input[type=password], input[type=email] {

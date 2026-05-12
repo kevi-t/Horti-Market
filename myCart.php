@@ -35,9 +35,9 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script> 
 	</head>
-<?php require 'includes/menu2.php'; ?>
-
 <body>
+
+<?php require 'includes/menu2.php'; ?>
 
 <div class="product-container">
 
